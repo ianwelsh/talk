@@ -224,8 +224,28 @@ export class CommentBodyExceedsMaxLengthError extends TalkError {
   }
 }
 
+export class URLInvalidError extends TalkError {
+  constructor({
+    url,
+    ...properties
+  }: {
+    url: string;
+    allowedDomains: string[];
+    tenantDomain?: string;
+  }) {
+    super({
+      code: ERROR_CODES.URL_NOT_PERMITTED,
+      context: { pvt: properties, pub: { url } },
+    });
+  }
+}
+
 export class StoryURLInvalidError extends TalkError {
-  constructor(properties: { storyURL: string; tenantDomains: string[] }) {
+  constructor(properties: {
+    storyURL: string;
+    allowedDomains: string[];
+    tenantDomain?: string;
+  }) {
     super({
       code: ERROR_CODES.STORY_URL_NOT_PERMITTED,
       context: { pub: properties },
