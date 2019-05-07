@@ -3,7 +3,6 @@ import DataLoader from "dataloader";
 import TenantContext from "talk-server/graph/tenant/context";
 import {
   GQLSTORY_STATUS,
-  GQLStoryMetadata,
   QueryToStoriesArgs,
 } from "talk-server/graph/tenant/schema/__generated__/types";
 import { Connection } from "talk-server/models/helpers/connection";
